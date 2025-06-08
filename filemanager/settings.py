@@ -15,6 +15,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+    'rest_framework_swagger',
+
 ]
 
 MIDDLEWARE = [
@@ -88,5 +90,5 @@ EMAIL_HOST = 'smtp.mail.ru'
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True
 EMAIL_HOST_USER = 'test_mail_django_practic@mail.ru'
-EMAIL_HOST_PASSWORD = 'qwerty45'
+EMAIL_HOST_PASSWORD = 'XYr4YX6c6SjGEXBQyL1A'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

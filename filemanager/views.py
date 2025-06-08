@@ -1,11 +1,24 @@
 from django.shortcuts import render, redirect
-from .forms import FileUploadForm
-from .models import StoredFile
+from core.forms import FileUploadForm
+from core.models import StoredFile
 import os
 from django.conf import settings
 from django.shortcuts import get_object_or_404
 from django.core.mail import send_mail
-from .forms import EmailForm
+from core.forms import EmailForm
+
+from django.shortcuts import render, redirect
+from core.forms import FileUploadForm
+from core.models import StoredFile
+from django.conf import settings
+import os
+import glob
+
+from django.shortcuts import render, redirect
+from core.models import StoredFile
+from core.forms import FileUploadForm
+from django.conf import settings
+import os
 
 def upload_file(request):
     if request.method == 'POST':
@@ -16,6 +29,7 @@ def upload_file(request):
     else:
         form = FileUploadForm()
     return render(request, 'upload.html', {'form': form})
+
 
 def file_list(request):
     files = StoredFile.objects.all().order_by('-uploaded_at')
@@ -53,3 +67,16 @@ def send_report(request):
         form = EmailForm()
 
     return render(request, 'email_form.html', {'form': form})
+
+
+def delete_file(request, file_id: int):
+    if request.method == 'GET':
+        file_obj = get_object_or_404(StoredFile, pk=file_id)
+        try:
+            os.remove(file_obj.file.path)
+        except:
+            print("file is already deleted")
+            StoredFile.objects.filter(id=file_id).delete()
+            return redirect('file_list')
+        file_obj.delete()
+    return redirect('file_list')
