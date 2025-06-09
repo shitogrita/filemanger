@@ -3,7 +3,7 @@ import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'your-secret-key-here'  # Замени на свой
+SECRET_KEY = '1234'
 DEBUG = True
 ALLOWED_HOSTS = []
 
