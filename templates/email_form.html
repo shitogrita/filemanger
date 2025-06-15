@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Отправить отчет</title>
-</head>
-<body>
-    <h1>Отправить отчет</h1>
-
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Отправить</button>
-    </form>
-
-    <p><a href="{% url 'file_list' %}">Назад к списку файлов</a></p>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}Отправить отчет{% endblock %}
+{% block content %}
+<h1>Отправить отчет</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Отправить</button>
+</form>
+<p class="back-link"><a href="{% url 'file_list' %}">← Назад к списку файлов</a></p>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Профиль{% endblock %}
+{% block content %}
+<div class="card mx-auto" style="max-width: 500px;">
+  <div class="card-body text-center">
+    <h3 class="card-title mb-4">{{ user.get_full_name|default:user.username }}</h3>
+    <p><strong>Загружено файлов:</strong> {{ count }}</p>
+    {% if last %}
+      <p><strong>Последняя активность:</strong> {{ last.uploaded_at|date:"d.m.Y H:i" }}</p>
+    {% endif %}
+    <a href="{% url 'upload_file' %}" class="btn btn-primary mt-3">Загрузить файл</a>
+    <a href="{% url 'file_list' %}" class="btn btn-secondary mt-3">Мои файлы</a>
+  </div>
+</div>
+{% endblock %}

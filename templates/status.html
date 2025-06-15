@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Статус системы{% endblock %}
+
+{% block content %}
+<h1>Статус системы</h1>
+
+<ul>
+  <li><strong>Количество пользователей:</strong> {{ user_count }}</li>
+  <li><strong>Общий размер файлов:</strong> {{ total_files_size_bytes }} байт</li>
+  <li><strong>Статус email-сервиса:</strong> {{ email_service_status }}</li>
+</ul>
+{% endblock %}

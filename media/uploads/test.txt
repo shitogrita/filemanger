@@ -1,17 +1,1 @@
-Hello World
-ERROR
-This is a test file.
-Another line with Test.
-error occurred in the system.
-HELLO again.
-Sample text for grep testing.
-No errors here.
-Just some random lines.
-Testing grep implementation.
-HELLO WORLD!
-Pattern matching is essential.
-Nothing to see here.
-hello!
-Another Pattern line.
-Error: something went wrong.
-pattern PATTERN Pattern.
+file content

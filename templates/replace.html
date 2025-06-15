@@ -1,19 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Заменить файл</title>
-</head>
-<body>
-    <h1>Заменить файл</h1>
+{% extends "base.html" %}
+{% block title %}Заменить файл{% endblock %}
+{% block content %}
+<h1>Заменить файл</h1>
+<p>Старый файл: <a href="{{ stored_file.file.url }}">{{ stored_file.file.name|cut:'media/' }}</a></p>
 
-    <p>Старый файл: <a href="{{ stored_file.file.url }}">{{ stored_file.file.name|cut:'media/' }}</a></p>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Заменить</button>
+</form>
 
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Заменить</button>
-    </form>
-
-    <p><a href="{% url 'file_list' %}">Назад к списку файлов</a></p>
-</body>
-</html>
+<p class="back-link"><a href="{% url 'file_list' %}">← Назад к списку файлов</a></p>
+{% endblock %}

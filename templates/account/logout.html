@@ -1,0 +1,9 @@
+{% extends "account/base.html" %}
+{% block account_content %}
+<h2 class="text-center">Вы уверены?</h2>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit" class="btn btn-danger w-100">Выйти</button>
+  <a href="{% url 'upload_file' %}" class="btn btn-secondary w-100 mt-2">Отмена</a>
+</form>
+{% endblock %}

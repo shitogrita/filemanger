@@ -1,41 +1,32 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Список файлов</title>
-</head>
-<body>
-    <h1>Список файлов</h1>
-    <p>
-    <a href="{% url 'send_report' %}">
-        <button>Отправить отчет</button>
-        </a>
-    </p>
-    <p>
-        <a href="{% url 'upload_file' %}">
-            <button>Загрузить новый</button>
-        </a>
-    </p>
+{% extends "base.html" %}
+{% block title %}Список файлов{% endblock %}
+{% block content %}
+<h1>Список файлов</h1>
 
-    <table border="1" cellpadding="10">
-        <tr>
-            <th>Файл</th>
-            <th>Описание</th>
-            <th>Действия</th>
-        </tr>
-        {% for file in files %}
-        <tr>
-            <td><a href="{{ file.file.url }}">{{ file.file.name|cut:'media/' }}</a></td>
-            <td>{{ file.description }}</td>
-            <td>
-                <a href="{% url 'replace_file' file.id %}"><button>Заменить</button></a>
-                <a href="{% url 'delete_file' file.id %}"><button>Удалить</button></a>
-            </td>
-        </tr>
-        {% empty %}
-        <tr>
-            <td colspan="3">Файлов нет.</td>
-        </tr>
-        {% endfor %}
-    </table>
-</body>
-</html>
+<div class="actions">
+    <a href="{% url 'send_report' %}"><button>Отправить отчет</button></a>
+    <a href="{% url 'upload_file' %}"><button>Загрузить новый</button></a>
+</div>
+
+<table>
+    <tr>
+        <th>Файл</th>
+        <th>Описание</th>
+        <th>Действия</th>
+    </tr>
+    {% for file in files %}
+    <tr>
+        <td><a href="{{ file.file.url }}">{{ file.file.name|cut:'media/' }}</a></td>
+        <td>{{ file.description }}</td>
+        <td class="actions">
+            <a href="{% url 'replace_file' file.id %}"><button>Заменить</button></a>
+            <a href="{% url 'delete_file' file.id %}"><button>Удалить</button></a>
+        </td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="3">Файлов нет.</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

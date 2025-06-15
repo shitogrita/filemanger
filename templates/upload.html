@@ -1,14 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Загрузка файла</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %}Загрузить файл{% endblock %}
+
+{% block content %}
+<div class="form-wrapper">
     <h1>Загрузить файл</h1>
-    <form method="post" enctype="multipart/form-data">
+    <form method="post" enctype="multipart/form-data" class="upload-form">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Загрузить</button>
+        <div class="field">
+            <label for="id_file">Файл</label>
+            {{ form.file }}
+        </div>
+        <div class="field">
+            <label for="id_description">Описание</label>
+            {{ form.description }}
+        </div>
+        <div class="actions">
+            <button type="submit">Загрузить</button>
+        </div>
     </form>
-</body>
-</html>
+</div>
+{% endblock %}
